@@ -24,7 +24,7 @@ const traxionpay = new TraxionPay(apiKey, secretKey);
 ```
 #### Cash in
 ```javascript
-# Sample arguments are the bare minimum for cash_in
+// Sample arguments are the bare minimum for cash_in
 const response = await traxionpay.cashIn({
   merchant_id: 6328,
   merchant_ref_no: "ABC123DEF456",
