@@ -1,0 +1,25 @@
+{
+  "name": "traxionpay-js-sdk",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "build": "tsc"
+  },
+  "author": "Traxion",
+  "license": "BSD-3-Clause",
+  "dependencies": {
+    "@types/crypto-js": "^4.0.1",
+    "@types/jest": "^26.0.15",
+    "@types/qs": "^6.9.5",
+    "axios": "^0.21.0",
+    "crypto-js": "^4.0.0",
+    "js-base64": "^3.6.0",
+    "qs": "^6.9.4"
+  },
+  "devDependencies": {
+    "jest": "^26.6.3",
+    "typescript": "^4.1.2"
+  }
+}
