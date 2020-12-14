@@ -1,4 +1,4 @@
-const { TraxionPay, createAdditionalData } = require('../lib');
+const { TraxionPay, encodeAdditionalData } = require('../lib');
 
 const apiKey = "7)5dmcfy^dp*9bdrcfcm$k-n=p7b!x(t)_f^i8mxl@v_+rno*x";
 const secretKey = "cxl+hwc%97h6+4#lx1au*ut=ml+=!fx85w94iuf*06=rf383xs";
@@ -31,7 +31,7 @@ describe("Cash in", () => {
   let samplePayload = {
     merchant_id: 6328,
     merchant_ref_no: "ABC123DEF456",
-    merchant_additional_data: createAdditionalData({ "payment_code": "some_code" }),
+    merchant_additional_data: encodeAdditionalData({ "payment_code": "some_code" }),
     description: "My test payment",
     amount: 1500.0,
     status_notification_url: apiurl,
