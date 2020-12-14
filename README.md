@@ -28,7 +28,7 @@ const traxionpay = new TraxionPay(apiKey, secretKey);
 const response = await traxionpay.cashIn({
   merchant_id: 6328,
   merchant_ref_no: "ABC123DEF456",
-  merchant_additional_data: "eyJwYXltZW50X2NvZGUiOiAiQUJDMTIzREVGNDU2In0=",
+  merchant_additional_data: encodeAdditionalData({ "payment_code": "ABC123DEF456" }), 
   description: "My test payment",
   amount: 1500.0,
   status_notification_url: apiurl,
