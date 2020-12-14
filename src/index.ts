@@ -5,9 +5,8 @@ import { encode } from "js-base64";
 
 import { BASE_URL, KEYS } from "./constants";
 import { BillingDetails, CashInFields, CashOutFields, LinkBankAccountFields, Payform } from "./types";
-import { generateToken, getValidatedPayload } from "./utils";
-
-export class TraxionPay {
+import { encodeAdditionalData, generateToken, getValidatedPayload, isValidAdditionalData } from "./utils";
+class TraxionPay {
   public apiKey: string;
   public secretKey: string;
   public token: string;
@@ -55,9 +54,10 @@ export class TraxionPay {
 
     let validBillingDetails = getValidatedPayload(billing_details, KEYS.billingDetails);
     let validCashInDetails = getValidatedPayload(cashInDetails, KEYS.cashIn);
-    
-    const encodedData = encode(unescape(encodeURIComponent(JSON.stringify({ "payment_code": validCashInDetails.merchant_ref_no }))));
-    const dataRef = decodeURIComponent(escape(encodedData));
+
+    if (!isValidAdditionalData(validCashInDetails.merchant_additional_data)) {
+      throw Error("'merchant_additional_data' must be valid. See `https://github.com/jvalle-traxion/txnpay-js#create-additional-data` in docs.");
+    }
 
     const { merchant_ref_no, amount, currency, description } = validCashInDetails;
     const dataToHash = `${merchant_ref_no}${amount}${currency}${description}`;
@@ -179,3 +179,5 @@ export class TraxionPay {
       .catch((err) => err.data);
   }
 }
+
+export { TraxionPay, encodeAdditionalData };
