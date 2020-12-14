@@ -56,7 +56,7 @@ class TraxionPay {
     let validCashInDetails = getValidatedPayload(cashInDetails, KEYS.cashIn);
 
     if (!isValidAdditionalData(validCashInDetails.merchant_additional_data)) {
-      throw Error("'merchant_additional_data' must be valid. See `https://github.com/jvalle-traxion/txnpay-js#create-additional-data` in docs.");
+      throw Error("'merchant_additional_data' must be valid. See `https://github.com/jvalle-traxion/txnpay-js#encode-additional-data` in docs.");
     }
 
     const { merchant_ref_no, amount, currency, description } = validCashInDetails;
