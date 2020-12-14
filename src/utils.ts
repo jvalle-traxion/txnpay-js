@@ -1,4 +1,4 @@
-import { encode } from "js-base64";
+import { encode, decode, isValid } from "js-base64";
 import { BasisList, Payload } from '../src/types';
 
 export function generateToken(secretKey: string): string {
@@ -76,5 +76,21 @@ export function getValidatedPayload(payload: Payload, basis: BasisList) {
     return validatedPayload;
   } else {
     throw Error("'payload' must be an object");
+  }
+}
+
+export function encodeAdditionalData (additionalData: object) {
+  if (typeof(additionalData) == "object") {
+    const encodedData = encode(unescape(encodeURIComponent(JSON.stringify(additionalData))));
+    return decodeURIComponent(escape(encodedData));
+  }
+  throw Error("'data' must be an object");
+}
+
+export function isValidAdditionalData (encodedAdditionalData: string) {
+  try {
+    return encode(decode(encodedAdditionalData)) === encodedAdditionalData;
+  } catch (error) {
+    return false;
   }
 }
