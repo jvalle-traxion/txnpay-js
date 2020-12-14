@@ -71,3 +71,10 @@ const bankAccounts = await traxionpay.fetchBankAccounts();
 ```javascript
 const banks = await traxionpay.fetchBanks();
 ```
+#### Utility Functions
+###### Encode Additional Data
+Encodes the object additional data into base64. 
+```javascript
+const encoded = encodeAdditionalData({ "payment_code": "ABC123DEF456" });
+// eyJwYXltZW50X2NvZGUiOiAiQUJDMTIzREVGNDU2In0=
+```
