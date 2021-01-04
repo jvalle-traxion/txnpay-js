@@ -52,55 +52,15 @@ export interface Basis extends Indexable {
   type: string;
 }
 
-export interface BillingDetailsBasis extends Indexable {
-  billing_email: Basis;
-  billing_first_name: Basis;
-  billing_last_name: Basis;
-  billing_middle_name: Basis
-  billing_phone: Basis;
-  billing_mobile: Basis;
-  billing_address: Basis;
-  billing_address2: Basis;
-  billing_city: Basis;
-  billing_state: Basis;
-  billing_zip: Basis;
-  billing_country: Basis;
-  billing_remark: Basis;
-}
-
-export interface CashInFieldsBasis extends Indexable {
-  merchant_id: Basis;
-  merchant_ref_no: Basis;
-  description: Basis;
-  amount: Basis;
-  currency: Basis;
-  merchant_additional_data: Basis;
-  payment_method?: Basis;
-  status_notification_url: Basis;
-  success_page_url: Basis;
-  failure_page_url: Basis;
-  cancel_page_url: Basis;
-  pending_page_url: Basis;
-}
-
+export type BillingDetailsBasis = Record<keyof BillingDetails, Basis> & Indexable;
+export type CashInFieldsBasis = Record<keyof CashInFields, Basis> & Indexable;
+export type LinkBankAccountFieldsBasis = Record<keyof LinkBankAccountFields, Basis> & Indexable;
+export type CashOutFieldsBasis = Record<keyof CashOutFields, Basis> & Indexable;
 export interface Payform extends CashInFields {
   auth_hash: string;
   secure_hash: string;
   alg: string;
 }
 
-export interface LinkBankAccountFieldsBasis extends Indexable {
-  bank: Basis;
-  bank_type: Basis,
-  account_name: Basis;
-  account_number: Basis;
-}
-
-export interface CashOutFieldsBasis extends Indexable {
-  OTP: Basis;
-  amount: Basis;
-  bank_account: Basis;
-}
-
-export type BasisList = CashInFieldsBasis | BillingDetailsBasis | LinkBankAccountFieldsBasis | CashOutFieldsBasis ;
+export type BasisList = CashInFieldsBasis | BillingDetailsBasis | LinkBankAccountFieldsBasis | CashOutFieldsBasis;
 export type Payload = CashInFields | BillingDetails | CashOutFields | LinkBankAccountFields;
