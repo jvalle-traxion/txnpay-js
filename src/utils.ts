@@ -79,18 +79,15 @@ export function getValidatedPayload(payload: Payload, basis: BasisList) {
   }
 }
 
+/**
+ * Encodes additionalData object to base64.
+ * 
+ * @param {string}  additionalData 
+ */
 export function encodeAdditionalData (additionalData: object) {
   if (typeof(additionalData) == "object") {
     const encodedData = encode(unescape(encodeURIComponent(JSON.stringify(additionalData))));
     return decodeURIComponent(escape(encodedData));
   }
   throw Error("'data' must be an object");
-}
-
-export function isValidAdditionalData (encodedAdditionalData: string) {
-  try {
-    return encode(decode(encodedAdditionalData)) === encodedAdditionalData;
-  } catch (error) {
-    return false;
-  }
 }
