@@ -24,7 +24,7 @@ export const KEYS = {
     },
     merchant_additional_data: {
       'required': true,
-      'type': 'string'
+      'type': 'object'
     },
     payment_method: {
       'required': false,
