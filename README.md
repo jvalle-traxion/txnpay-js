@@ -28,7 +28,7 @@ const traxionpay = new TraxionPay(apiKey, secretKey);
 const response = await traxionpay.cashIn({
   merchant_id: 6328,
   merchant_ref_no: "ABC123DEF456",
-  merchant_additional_data: encodeAdditionalData({ "payment_code": "ABC123DEF456" }), 
+  merchant_additional_data: { "payment_code": "ABC123DEF456" }, 
   description: "My test payment",
   amount: 1500.0,
   status_notification_url: apiurl,
@@ -70,11 +70,4 @@ const bankAccounts = await traxionpay.fetchBankAccounts();
 #### Fetch banks
 ```javascript
 const banks = await traxionpay.fetchBanks();
-```
-#### Utility Functions
-###### Encode Additional Data
-Encodes the object additional data into base64. 
-```javascript
-const encoded = encodeAdditionalData({ "payment_code": "ABC123DEF456" });
-// eyJwYXltZW50X2NvZGUiOiAiQUJDMTIzREVGNDU2In0=
 ```
